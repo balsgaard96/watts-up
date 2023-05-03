@@ -13,7 +13,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Server statiske filer fra den offentlige mappe
+//Mappen serveren finder de statiske filer i 
 app.use(express.static(__dirname));
 
 // Hent data fra databasen og send det som JSON
