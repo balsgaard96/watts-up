@@ -12,7 +12,44 @@
 <body>
 
     <body>
+<<<<<<< HEAD
 
+=======
+        <a href="index.html" class="back-button">Tilbage til forsiden</a>
+        <h1>Device beregner</h1>
+
+        <p>Indtast watt-forbrug og antal timer pr. dag, så beregner den daglige strømomkostning for din device.</p>
+
+        <form>
+            <label for="watt">Watt-forbrug:</label>
+            <input type="number" id="watt" name="watt" min="0" step="1" required>
+            <label for="timer">Antal timer pr. dag:</label>
+            <input type="number" id="timer" name="timer" min="0" step="1" required>
+            <label for="pris">Strømpris (kr./kWh):</label>
+            <input type="number" id="pris" name="pris" min="0" step="0.01" required>
+            <label for="resultat">Daglig strømomkostning:</label>
+            <input type="text" id="resultat" name="resultat" readonly>
+            <button type="button" onclick="beregn()">Beregn</button>
+        </form>
+
+        <script>
+            function beregn() {
+                var watt = document.getElementById("watt").value;
+                var timer = document.getElementById("timer").value;
+                var pris_per_kwh = document.getElementById("pris").value;
+
+                var dagligt_watt_forbrug = watt * timer;
+                var daglig_stromomkostning = (dagligt_watt_forbrug / 1000) * pris_per_kwh; // Konverter watt til kWh
+
+                document.getElementById("resultat").value = daglig_stromomkostning.toFixed(2) + " kr.";
+            }
+
+
+
+        </script>
+
+        <h1>Lommeregner</h1>
+>>>>>>> 3a9f6b0ad3c04cc9610b2deffd2bb4a9a493b065
 
         <p>Beregn dit Watt forbrug ved at gange Volt V (spænding) med Ampere A (strøm)</p>
         <p>Dette er OHM's lov til beregning af Watt</p>
