@@ -13,8 +13,8 @@
     fetch('/electricity_rates')
       .then(response => response.json())
       .then(data => {
-        const x = data.map(row => row.time);
-        const y = data.map(row => row.ore_per_kwh);
+        const x = data.map(row => row.month);
+        const y = data.map(row => row.price);
         const trace = {
           x: x,
           y: y,
@@ -23,10 +23,10 @@
         const layout = {
           title: 'Electricity Rates',
           xaxis: {
-            title: 'Time'
+            title: 'Måned'
           },
           yaxis: {
-            title: 'Ore per kWh'
+            title: 'Elpris'
           }
         };
         Plotly.newPlot('chart', [trace], layout);
