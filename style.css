@@ -2,13 +2,13 @@
 .back-button {
 	display: inline-block;
 	padding: 10px 20px;
-	background-color: #4CAF50;
-	color: white;
+	background-color: #0175ac;
+	color: rgb(255, 255, 255);
 	text-decoration: none;
 	border-radius: 5px;
 }
 
 /* Når musen er over knappen */
 .back-button:hover {
-	background-color: #3e8e41;
+	background-color: #00419c;
 }
