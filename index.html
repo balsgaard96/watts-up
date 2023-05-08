@@ -1,23 +1,805 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Watts'up</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Watt's up</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #right-sidebar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 18.7%;
+            height: 97.3%;
+            background-color: #cdedf3c8;
+            padding: 10px;
+        }
+
+        #image {
+            position: absolute;
+            top: 0;
+            left: 0%;
+            right: 20%;
+            height: 100%;
+            background-image: url('img/hus.jpg');
+            background-size: cover;
+            background-position: center center;
+            overflow: hidden;
+        }
+    </style>
+
+
+    <title>Circle1 Kummefryser</title>
+    <style>
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 2px solid Black;
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox {
+            display: none;
+            position: absolute;
+            top: 20%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle:hover+.textbox {
+            display: block;
+        }
+
+        .circle.active+.textbox {
+            display: block;
+        }
+    </style>
+
+    <title>Circle2 Føntørre</title>
+    <style>
+        .circle2 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 2px solid Black;
+            position: absolute;
+            top: 43%;
+            left: 22%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox2 {
+            display: none;
+            position: absolute;
+            top: 43%;
+            left: 12%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle2:hover+.textbox2 {
+            display: block;
+        }
+
+        .circle2.active+.textbox2 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle3 Vaskemaskinen</title>
+    <style>
+        .circle3 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 48%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox3 {
+            display: none;
+            position: absolute;
+            top: 38%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle3:hover+.textbox3 {
+            display: block;
+        }
+
+        .circle3.active+.textbox3 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle4 Tørretumbler</title>
+    <style>
+        .circle4 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 60%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox4 {
+            display: none;
+            position: absolute;
+            top: 70%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle4:hover+.textbox4 {
+            display: block;
+        }
+
+        .circle4.active+.textbox4 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle5 Router</title>
+    <style>
+        .circle5 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 48%;
+            left: 38.5%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox5 {
+            display: none;
+            position: absolute;
+            top: 40%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle5:hover+.textbox5 {
+            display: block;
+        }
+
+        .circle5.active+.textbox5 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle6 Bærbar</title>
+    <style>
+        .circle6 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 51%;
+            left: 42.5%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox6 {
+            display: none;
+            position: absolute;
+            top: 48%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle6:hover+.textbox6 {
+            display: block;
+        }
+
+        .circle6.active+.textbox6 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle7 Stationær</title>
+    <style>
+        .circle7 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox7 {
+            display: none;
+            position: absolute;
+            top: 55%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle7:hover+.textbox7 {
+            display: block;
+        }
+
+        .circle7.active+.textbox7 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle8 Led pære</title>
+    <style>
+        .circle8 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 78%;
+            left: 15.4%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox8 {
+            display: none;
+            position: absolute;
+            top: 85%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle8:hover+.textbox8 {
+            display: block;
+        }
+
+        .circle8.active+.textbox8 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle9 Tv</title>
+    <style>
+        .circle9 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 84%;
+            left: 29%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox9 {
+            display: none;
+            position: absolute;
+            top: 94%;
+            left: 29%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle9:hover+.textbox9 {
+            display: block;
+        }
+
+        .circle9.active+.textbox9 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle10 Emhætte</title>
+    <style>
+        .circle10 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 75%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox10 {
+            display: none;
+            position: absolute;
+            top: 65%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle10:hover+.textbox10 {
+            display: block;
+        }
+
+        .circle10.active+.textbox10 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle11 Kaffemaskine</title>
+    <style>
+        .circle11 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 81%;
+            left: 43%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox11 {
+            display: none;
+            position: absolute;
+            top: 81%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle11:hover+.textbox11 {
+            display: block;
+        }
+
+        .circle11.active+.textbox11 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle12 Opvaskemaskine</title>
+    <style>
+        .circle12 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 90%;
+            left: 43%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox12 {
+            display: none;
+            position: absolute;
+            top: 90%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle12:hover+.textbox12 {
+            display: block;
+        }
+
+        .circle12.active+.textbox12 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle13 Køleskab</title>
+    <style>
+        .circle13 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 80%;
+            left: 49%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox13 {
+            display: none;
+            position: absolute;
+            top: 70%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle13:hover+.textbox13 {
+            display: block;
+        }
+
+        .circle13.active+.textbox13 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle14 Ovn</title>
+    <style>
+        .circle14 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #cae62b;
+            opacity: 0.4;
+            border: 3px solid Black;
+            position: absolute;
+            top: 87%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox14 {
+            display: none;
+            position: absolute;
+            top: 96%;
+            left: 61%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .circle14:hover+.textbox14 {
+            display: block;
+        }
+
+        .circle14.active+.textbox14 {
+            display: block;
+        }
+    </style>
+
+    <title>Circle15 Hemmelig</title>
+    <style>
+        .circle15 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: none;
+            opacity: 0.4;
+
+            position: absolute;
+            top: 14%;
+            left: 29%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .textbox15 {
+            display: none;
+            position: absolute;
+            top: 55%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 22px;
+            width: 600px;
+        }
+
+        .circle15:hover+.textbox15 {
+            display: block;
+        }
+
+        .circle15.active+.textbox15 {
+            display: block;
+        }
+    </style>
+
 </head>
 
 <body>
-    <h1>Velkommen til Vingegaards watt</h1>
-    <p> klik på en udvalgt device for at finde wattforburget </p>
 
-    <br>
-    <img src="img/jonas1.jpg" alt="jonas på cykel" style="width: 200px">
+    <div id="image">
+        <div id="circle"></div>
+    </div>
 
-    <ul>
-        <li><a href="graf.html">Graf</a></li>
-        <li><a href="lommeregner.html">Lommeregner</a></li>
-    </ul>
+
+    <div id="right-sidebar">
+        <h3>Watt beregner</h3>
+        <p>Her kan du se vores super fede watt måle beregner.</p>
+        <a href="wattberegner.html">Watt beregner</a>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h3>Graf</h3>
+        <p>Her kan du se vores graf over hvor maeget bla bla bla.</p>
+        <a href="graf.html">Link Graf</a>
+        <br><br><br>
+        <h3>Om os</h3>
+        <p> Denne fantastisk gruppe består af<Br>
+            Amelia<Br>
+            Søren<Br>
+            Rasmus<Br>
+            Jesper
+        </p>
+        <a href="info.html">Info siden</a>
+    </div>
+
+    <!--1-------------------------------------------------------------------->
+    <div class="circle"></div>
+    <div class="textbox">Kummefryser.</div>
+    <script>
+        let circle = document.querySelector('.circle');
+        let textbox = document.querySelector('.textbox');
+        circle.addEventListener('click', function () {
+            circle.classList.toggle('active');
+        });
+    </script>
+    <!--2--------------------------------------------------------------------->
+    <div class="circle2"></div>
+    <div class="textbox2">Føntørre.</div>
+    <script>
+        let circle2 = document.querySelector('.circle2');
+        let textbox2 = document.querySelector('.textbox2');
+        circle2.addEventListener('click', function () {
+            circle2.classList.toggle('active');
+        });
+    </script>
+    <!--3--------------------------------------------------------------------->
+    <div class="circle3"></div>
+    <div class="textbox3">Vaskemaskiner.</div>
+    <script>
+        let circle3 = document.querySelector('.circle3');
+        let textbox3 = document.querySelector('.textbox3');
+        circle3.addEventListener('click', function () {
+            circle3.classList.toggle('active');
+        });
+    </script>
+    <!--4--------------------------------------------------------------------->
+    <div class="circle4"></div>
+    <div class="textbox4">Tørretumbler.</div>
+    <script>
+        let circle4 = document.querySelector('.circle4');
+        let textbox4 = document.querySelector('.textbox4');
+        circle4.addEventListener('click', function () {
+            circle4.classList.toggle('active');
+        });
+    </script>
+    <!--5--------------------------------------------------------------------->
+    <div class="circle5"></div>
+    <div class="textbox5">Router.</div>
+    <script>
+        let circle5 = document.querySelector('.circle5');
+        let textbox5 = document.querySelector('.textbox5');
+        circle5.addEventListener('click', function () {
+            circle5.classList.toggle('active');
+        });
+    </script>
+    <!--6--------------------------------------------------------------------->
+    <div class="circle6"></div>
+    <div class="textbox6">Bærbar PC.</div>
+    <script>
+        let circle6 = document.querySelector('.circle6');
+        let textbox6 = document.querySelector('.textbox6');
+        circle6.addEventListener('click', function () {
+            circle6.classList.toggle('active');
+        });
+    </script>
+    <!--7--------------------------------------------------------------------->
+    <div class="circle7"></div>
+    <div class="textbox7">Stationær PC.</div>
+    <script>
+        let circle7 = document.querySelector('.circle7');
+        let textbox7 = document.querySelector('.textbox7');
+        circle7.addEventListener('click', function () {
+            circle7.classList.toggle('active');
+        });
+    </script>
+    <!--8--------------------------------------------------------------------->
+    <div class="circle8"></div>
+    <div class="textbox8">Led pære.</div>
+    <script>
+        let circle8 = document.querySelector('.circle8');
+        let textbox8 = document.querySelector('.textbox8');
+        circle8.addEventListener('click', function () {
+            circle8.classList.toggle('active');
+        });
+    </script>
+    <!--9--------------------------------------------------------------------->
+    <div class="circle9"></div>
+    <div class="textbox9">Tv.</div>
+    <script>
+        let circle9 = document.querySelector('.circle9');
+        let textbox9 = document.querySelector('.textbox9');
+        circle9.addEventListener('click', function () {
+            circle9.classList.toggle('active');
+        });
+    </script>
+    <!--10-------------------------------------------------------------------->
+    <div class="circle10"></div>
+    <div class="textbox10">Emhætte.</div>
+    <script>
+        let circle10 = document.querySelector('.circle10');
+        let textbox10 = document.querySelector('.textbox10');
+        circle10.addEventListener('click', function () {
+            circle10.classList.toggle('active');
+        });
+    </script>
+    <!--11-------------------------------------------------------------------->
+    <div class="circle11"></div>
+    <div class="textbox11">Kaffemaskine.</div>
+    <script>
+        let circle11 = document.querySelector('.circle11');
+        let textbox11 = document.querySelector('.textbox11');
+        circle11.addEventListener('click', function () {
+            circle11.classList.toggle('active');
+        });
+    </script>
+    <!--12-------------------------------------------------------------------->
+    <div class="circle12"></div>
+    <div class="textbox12">Opvaskemaskine.</div>
+    <script>
+        let circle12 = document.querySelector('.circle12');
+        let textbox12 = document.querySelector('.textbox12');
+        circle12.addEventListener('click', function () {
+            circle12.classList.toggle('active');
+        });
+    </script>
+    <!--13-------------------------------------------------------------------->
+    <div class="circle13"></div>
+    <div class="textbox13">Køleskab.</div>
+    <script>
+        let circle13 = document.querySelector('.circle13');
+        let textbox13 = document.querySelector('.textbox13');
+        circle13.addEventListener('click', function () {
+            circle13.classList.toggle('active');
+        });
+    </script>
+    <!--14-------------------------------------------------------------------->
+    <div class="circle14"></div>
+    <div class="textbox14">Ovn.</div>
+    <script>
+        let circle14 = document.querySelector('.circle14');
+        let textbox14 = document.querySelector('.textbox14');
+        circle14.addEventListener('click', function () {
+            circle14.classList.toggle('active');
+        });
+    </script>
+    <!--15-------------------------------------------------------------------->
+    <div class="circle15"></div>
+    <div class="textbox15">Det vil koste 1500 kr. at putte den sure nabo i kummefryseren i 1 år. <img
+            src="img/Sur nabo.jpg" alt="Sur nabo" width="600"></div>
+    <script>
+        let circle15 = document.querySelector('.circle15');
+        let textbox15 = document.querySelector('.textbox15');
+        circle15.addEventListener('click', function () {
+            circle15.classList.toggle('active');
+        });
+    </script>
+
+
 
 </body>
 
