@@ -64,7 +64,19 @@
                     .attr("x", d => x(d.month))
                     .attr("y", d => y(d.price))
                     .attr("width", x.bandwidth())
-                    .attr("height", d => height - y(d.price));
+                    .attr("height", d => height - y(d.price))
+                    .on("mouseover", function() {
+                        d3.select(this)
+                            .attr("opacity", 0.7)
+                            .attr("fill", "#1D3AB9");
+                    })
+                    .on("mouseout", function() {
+                        d3.select(this)
+                            .attr("opacity", 1.0)
+                            .attr("fill", "#000000");
+                    })
+                    .append("title")
+                    .text(d => `Måned: ${d.month}\n Pris: ${d.price}`);
             })
             .catch(error => {
                 console.error(error);
