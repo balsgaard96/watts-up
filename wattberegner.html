@@ -15,39 +15,63 @@
 
     <body>
 
-        <h1>Vingegaard cykle så længe !</h1>
-
-        <p>Indtast watt-forbrug og antal timer pr. dag, så beregner den daglige strømomkostning for din device.</p>
-
+        <h1>Hvor lang tid skal Jonas Vingegaard cykle,
+            og hvad koster det</h1>
         <form>
-            <label for="watt">Watt-forbrug:</label>
-            <input type="number" id="watt" name="watt" min="0" step="1" required>
-            <label for="timer">Antal timer pr. dag:</label>
-            <input type="number" id="timer" name="timer" min="0" step="1" required>
-            <label for="pris">Strømpris (kr./kWh):</label>
-            <input type="number" id="pris" name="pris" min="0" step="0.01" required>
-            <label for="resultat">Daglig strømomkostning:</label>
-            <input type="text" id="resultat" name="resultat" readonly>
-            <button type="button" onclick="beregn()">Beregn</button>
+            <label for="elektrisk-apparat-effekt">Elektrisk apparats i watt</label>
+            <input type="number" id="elektrisk-apparat-effekt" name="elektrisk-apparat-effekt" required><br>
+            <br>
+            <label for="tid">Tid i timer </label>
+            <input type="number" id="tid" name="tid" required><br>
+
+            <button type="submit">Beregn</button>
         </form>
 
+        <div id="resultat"></div>
+
         <script>
-            function beregn() {
-                var watt = document.getElementById("watt").value;
-                var timer = document.getElementById("timer").value;
-                var pris_per_kwh = document.getElementById("pris").value;
 
-                var dagligt_watt_forbrug = watt * timer;
-                var daglig_stromomkostning = (dagligt_watt_forbrug / 1000) * pris_per_kwh; // Konverter watt til kWh
+            // Faste værdier
+            const vingegaardEffekt = 450;
+            const energipris = 4;
 
-                document.getElementById("resultat").value = daglig_stromomkostning.toFixed(2) + " kr.";
-            }
+            // Hent formularfelterne
+            const formular = document.querySelector('form');
+            const elektriskApparatEffektInput = formular.querySelector('#elektrisk-apparat-effekt');
+            const tidInput = formular.querySelector('#tid');
 
+            // Lyt på formularindsendelse og beregn resultatet
+            formular.addEventListener('submit', function (e) {
+                e.preventDefault();
 
+                // Hent værdierne fra formularfelterne
+                const elektriskApparatEffekt = elektriskApparatEffektInput.value;
+                const tid = tidInput.value;
+
+                // Beregn resultatet
+                const energiForbrug = (elektriskApparatEffekt / 1000) * tid; // kWh
+                const cyklingstid = energiForbrug / (vingegaardEffekt / 1000); // timer
+                const cyklingstidTimer = Math.floor(cyklingstid);
+                const cyklingstidMinutter = Math.round((cyklingstid - cyklingstidTimer) * 60);
+                const energiPris = energiForbrug * energipris;
+
+                // Vis resultatet på siden
+                const resultatDiv = document.querySelector('#resultat');
+                resultatDiv.innerHTML = `
+          <h2>Resultat</h2>
+          <p> Jonas Vingegaard skal cykle ${cyklingstidTimer} timer og ${cyklingstidMinutter} minutter for at holde dit apparat tændt på ${elektriskApparatEffekt} watt i ${tid} timer.</p>
+          <p>Det vil koste dig ${energiPris.toFixed(2)} kr. at holde dit apparat tændt på ${elektriskApparatEffekt} watt i ${tid} timer, den angivne energipris er ${energipris} kr. pr. kWh.</p>
+        `;
+            });
 
         </script>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+        <style>
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+        </style>
 
 
         <!--
