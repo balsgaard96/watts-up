@@ -8,6 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .gif-animation {
+            width: 200px;
+            height: auto;
+            position: relative;
+            left: 0;
+            top: 0;
+            animation-name: move-right;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes move-right {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: calc(80% - 150px);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -62,6 +85,19 @@
           <p>Det vil koste dig ${energiPris.toFixed(2)} kr. at holde dit apparat tændt på ${elektriskApparatEffekt} watt i ${tid} timer, den angivne energipris er ${energipris} kr. pr. kWh.</p>`;
         });
 
+    </script>
+
+    <div class="container">
+        <img class="gif-animation" src="gif/vingegaard.gif" alt="Animated GIF">
+    </div>
+
+    <script>
+        function moveDown() {
+            var gif = document.querySelector('.gif-animation');
+            gif.style.top = "350px"; /* Juster denne værdi for at flytte GIF'en nedad */
+        }
+
+        moveDown(); // Kald moveDown-funktionen for at flytte GIF'en nedad ved indlæsning af siden
     </script>
     <!--
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
