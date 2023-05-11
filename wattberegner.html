@@ -13,99 +13,99 @@
 <body>
     <a href="index.html" class="back-button">Tilbage til forsiden</a>
 
-    <body>
 
-        <h1>Hvor lang tid skal Jonas Vingegaard cykle,
-            og hvad koster det</h1>
-        <form>
-            <label for="elektrisk-apparat-effekt">Elektrisk apparats i watt</label>
-            <input type="number" id="elektrisk-apparat-effekt" name="elektrisk-apparat-effekt" required><br>
-            <br>
-            <label for="tid">Tid i timer </label>
-            <input type="number" id="tid" name="tid" required><br>
+    <h1>Hvor lang tid skal Jonas Vingegaard cykle,
+        og hvad koster det</h1>
+    <form>
+        <label for="elektrisk-apparat-effekt">Elektrisk apparat i watt</label>
+        <input type="number" id="elektrisk-apparat-effekt" name="elektrisk-apparat-effekt" required><br>
+        <br>
+        <label for="tid">Tid i timer </label>
+        <input type="number" id="tid" name="tid" required><br>
 
-            <button type="submit">Beregn</button>
-        </form>
+        <button type="submit">Beregn</button>
+    </form>
 
-        <div id="resultat"></div>
+    <div id="resultat"></div>
 
-        <script>
+    <script>
 
-            // Faste værdier
-            const vingegaardEffekt = 450;
-            const energipris = 4;
+        // Faste værdier
+        const vingegaardEffekt = 450;
+        const energipris = 4;
 
-            // Hent formularfelterne
-            const formular = document.querySelector('form');
-            const elektriskApparatEffektInput = formular.querySelector('#elektrisk-apparat-effekt');
-            const tidInput = formular.querySelector('#tid');
+        // Hent formularfelterne
+        const formular = document.querySelector('form');
+        const elektriskApparatEffektInput = formular.querySelector('#elektrisk-apparat-effekt');
+        const tidInput = formular.querySelector('#tid');
 
-            // Lyt på formularindsendelse og beregn resultatet
-            formular.addEventListener('submit', function (e) {
-                e.preventDefault();
+        // Lyt på formularindsendelse og beregn resultatet
+        formular.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-                // Hent værdierne fra formularfelterne
-                const elektriskApparatEffekt = elektriskApparatEffektInput.value;
-                const tid = tidInput.value;
+            // Hent værdierne fra formularfelterne
+            const elektriskApparatEffekt = elektriskApparatEffektInput.value;
+            const tid = tidInput.value;
 
-                // Beregn resultatet
-                const energiForbrug = (elektriskApparatEffekt / 1000) * tid; // kWh
-                const cyklingstid = energiForbrug / (vingegaardEffekt / 1000); // timer
-                const cyklingstidTimer = Math.floor(cyklingstid);
-                const cyklingstidMinutter = Math.round((cyklingstid - cyklingstidTimer) * 60);
-                const energiPris = energiForbrug * energipris;
+            // Beregn resultatet
+            const energiForbrug = (elektriskApparatEffekt / 1000) * tid; // kWh
+            const cyklingstid = energiForbrug / (vingegaardEffekt / 1000); // timer
+            const cyklingstidTimer = Math.floor(cyklingstid);
+            const cyklingstidMinutter = Math.round((cyklingstid - cyklingstidTimer) * 60);
+            const energiPris = energiForbrug * energipris;
 
-                // Vis resultatet på siden
-                const resultatDiv = document.querySelector('#resultat');
-                resultatDiv.innerHTML = `
-          <h2>Resultat</h2>
+            // Vis resultatet på siden
+            const resultatDiv = document.querySelector('#resultat');
+            resultatDiv.innerHTML =
+                `<h2>Resultat</h2>
           <p> Jonas Vingegaard skal cykle ${cyklingstidTimer} timer og ${cyklingstidMinutter} minutter for at holde dit apparat tændt på ${elektriskApparatEffekt} watt i ${tid} timer.</p>
           <p>Det vil koste dig ${energiPris.toFixed(2)} kr. at holde dit apparat tændt på ${elektriskApparatEffekt} watt i ${tid} timer, den angivne energipris er ${energipris} kr. pr. kWh.</p>`;
-            });
+        });
 
-        </script>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
-        <!--
+    <!--
         <p>Beregn dit Watt forbrug ved at gange Volt V (spænding) med Ampere A (strøm)</p>
         -->
 
 
-        <p>Har du svært ved at finde den watt din enhed bruger men kan finde spænding i volt og din strøm i ampere. <br>
-            Så kan du finde din watt ved at indtaste nedenfor i de to første bokse. <br>
-            I enstikkontakt er der en spænding på 230 volt og ude i el-skabet er der en sikring på 10 ampere.<br>
-            Sikringen springer så snark man overskrider 2300 watt i forbrug 230V * 10A = 2300 W<br>
-            Dette er OHM's lov til beregning af Watt</p>
+    <p>Har du svært ved at finde den watt din enhed bruger men kan finde spænding i volt og din strøm i ampere. <br>
+        Så kan du finde din watt ved at indtaste nedenfor i de to første bokse. <br>
+        I enstikkontakt er der en spænding på 230 volt og ude i el-skabet er der en sikring på 10 ampere.<br>
+        Sikringen springer så snark man overskrider 2300 watt i forbrug 230V * 10A = 2300 W<br>
+        Dette er OHM's lov til beregning af Watt</p>
 
 
-        <form>
-            <label for="num1">Volt:</label>
-            <input type="number" id="num1" name="num1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="num2">Ampere:</label>
-            <input type="number" id="num2" name="num2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="result">Watt:</label>
-            <input type="number" id="result" name="result" readonly>
+    <form>
+        <label for="num1">Volt:</label>
+        <input type="number" id="num1" name="num1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="num2">Ampere:</label>
+        <input type="number" id="num2" name="num2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="result">Watt:</label>
+        <input type="number" id="result" name="result" readonly>
 
-        </form>
-        <script>
-            var num1 = document.getElementById("num1");
-            var num2 = document.getElementById("num2");
-            var result = document.getElementById("result");
+    </form>
+    <script>
+        var num1 = document.getElementById("num1");
+        var num2 = document.getElementById("num2");
+        var result = document.getElementById("result");
 
-            num1.addEventListener("input", updateResult);
-            num2.addEventListener("input", updateResult);
+        num1.addEventListener("input", updateResult);
+        num2.addEventListener("input", updateResult);
 
-            function updateResult() {
-                var value1 = num1.value;
-                var value2 = num2.value;
-                var resultValue = value1 * value2;
-                result.value = resultValue;
-            }
-        </script>
+        function updateResult() {
+            var value1 = num1.value;
+            var value2 = num2.value;
+            var resultValue = value1 * value2;
+            result.value = resultValue;
+        }
+    </script>
 
 
-    </body>
+</body>
 
 </html>
