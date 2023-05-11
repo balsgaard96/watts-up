@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Electricity Rates</title>
+    <script src="d3.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <a href="index.html" class="back-button">Tilbage til forsiden</a>
+    <div id="chart"></div>
+    <script>
+        // Definer variabler for diagrammets størrelse og margener
+        const margin = { top: 20, right: 30, bottom: 50, left: 40 };
+        const width = 1000 - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
+        // Hent data fra serveren
+        fetch('/electricity_rates')
+            .then(response => response.json())
+            .then(data => {
+                // Opret skalaer for x- og y-aksen
+                const x = d3.scaleBand()
+                    .domain(data.map(d => d.month))
+                    .range([0, width])
+                    .padding(0.2)
+                    .align(0.5);
+
+                const y = d3.scaleLinear()
+                    .domain([0, 150])
+                    .range([height, 0]);
+
+                // Opret akselobjekter for x- og y-aksen
+                const xAxis = d3.axisBottom(x)
+                    .tickValues(x.domain().filter((d, i) => i % 4 === 0)); // vis kun hver 4. måned på x-aksen
+
+                const yAxis = d3.axisLeft(y);
+
+                // Tilføj aksler til diagrammet
+                const svg = d3.select("#chart")
+                    .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                svg.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis)
+                    .selectAll("text")
+                    .attr("transform", "rotate(-45)")
+                    .style("text-anchor", "end")
+                    .attr("font-size", "12px");
+
+                svg.append("g")
+                    .call(yAxis);
+
+                // Tilføj datapunkter til diagrammet
+                svg.selectAll(".bar")
+                    .data(data)
+                    .enter()
+                    .append("rect")
+                    .attr("class", "bar")
+                    .attr("x", d => x(d.month))
+                    .attr("y", d => y(d.price))
+                    .attr("width", x.bandwidth())
+                    .attr("height", d => height - y(d.price))
+                    .on("mouseover", function() {
+                        d3.select(this)
+                            .attr("opacity", 0.7)
+                            .attr("fill", "#A62A1C");
+                    })
+                    .on("mouseout", function() {
+                        d3.select(this)
+                            .attr("opacity", 1.0)
+                            .attr("fill", "#000000");
+                    })
+                    .append("title")
+                    .text(d => `Måned: ${d.month}\n Pris: ${d.price}`);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+</body>
+
+</html>
