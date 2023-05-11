@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
         .gif-animation {
-            width: 200px;
+            width: 430px;
             height: auto;
             position: relative;
             left: 0;
@@ -27,7 +27,7 @@
             }
 
             to {
-                left: calc(80% - 150px);
+                left: calc(85% - 200px);
             }
         }
     </style>
@@ -88,13 +88,13 @@
     </script>
 
     <div class="container">
-        <img class="gif-animation" src="gif/vingegaard.gif" alt="Animated GIF">
+        <img class="gif-animation" src="img/vingegaard.gif" alt="Animated GIF">
     </div>
 
     <script>
         function moveDown() {
             var gif = document.querySelector('.gif-animation');
-            gif.style.top = "350px"; /* Juster denne værdi for at flytte GIF'en nedad */
+            gif.style.top = "80px"; /* Juster denne værdi for at flytte GIF'en nedad */
         }
 
         moveDown(); // Kald moveDown-funktionen for at flytte GIF'en nedad ved indlæsning af siden
