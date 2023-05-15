@@ -9,6 +9,7 @@
 
 <body>
     <a href="index.html" class="back-button">Tilbage til forsiden</a>
+    <h1>Udviklingen af Elpris</el-priser></h1>
     <div id="chart"></div>
     <script>
         // Definer variabler for diagrammets størrelse og margener
@@ -27,12 +28,12 @@
                     .align(0.5);
 
                 const y = d3.scaleLinear()
-                    .domain([0, 150])
+                    .domain([0,240])
                     .range([height, 0]);
 
                 // Opret akselobjekter for x- og y-aksen
                 const xAxis = d3.axisBottom(x)
-                    .tickValues(x.domain().filter((d, i) => i % 4 === 0)); // vis kun hver 4. måned på x-aksen
+                    .tickValues(x.domain().filter((d, i) => i % 3 === 0)); // vis kun hver 4. måned på x-aksen
 
                 const yAxis = d3.axisLeft(y);
 
@@ -65,15 +66,16 @@
                     .attr("y", d => y(d.price))
                     .attr("width", x.bandwidth())
                     .attr("height", d => height - y(d.price))
+                    .attr("fill", d => d3.interpolateRgb("brown", "orange")(d.price / 100))
                     .on("mouseover", function() {
                         d3.select(this)
-                            .attr("opacity", 0.7)
-                            .attr("fill", "#A62A1C");
+                            .attr("opacity", 1)
+                            .attr("fill", "Blue");
                     })
                     .on("mouseout", function() {
                         d3.select(this)
                             .attr("opacity", 1.0)
-                            .attr("fill", "#000000");
+                            .attr("fill", d => d3.interpolateRgb("brown", "orange")(d.price / 100));
                     })
                     .append("title")
                     .text(d => `Måned: ${d.month}\n Pris: ${d.price}`);
