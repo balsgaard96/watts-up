@@ -70,7 +70,7 @@
                     .attr("y", d => y(d.price))
                     .attr("width", x.bandwidth())
                     .attr("height", d => height - y(d.price))
-                    .attr("fill", d => d3.interpolateRgb("brown", "orange")(d.price / 100))
+                    .attr("fill", d => d3.interpolateRgb("yellow", "red")(d.price / 100))
                     .on("mouseover", function() {
                         d3.select(this)
                             .attr("opacity", 1)
@@ -79,7 +79,7 @@
                     .on("mouseout", function() {
                         d3.select(this)
                             .attr("opacity", 1.0)
-                            .attr("fill", d => d3.interpolateRgb("brown", "orange")(d.price / 100));
+                            .attr("fill", d => d3.interpolateRgb("yellow", "red")(d.price / 100));
                     })
                     .append("title")
                     .text(d => `Måned: ${d.month}\n Pris: ${d.price}`);
