@@ -20,28 +20,30 @@
         const margin = { top: 20, right: 30, bottom: 50, left: 40 };
         const width = 1000 - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
-        // Hent data fra serveren
+        // Henter data fra PgA/API som json
         fetch('/electricity_rates')
             .then(response => response.json())
             .then(data => {
                 // Opret skalaer for x- og y-aksen
+                // ScaleBand, da dataerne er kategoriske værdier
                 const x = d3.scaleBand()
                     .domain(data.map(d => d.month))
                     .range([0, width])
                     .padding(0.2)
                     .align(0.5);
 
+                //Lineær skalering for y-aksen, da det er numeriske værdier
                 const y = d3.scaleLinear()
                     .domain([0,240])
                     .range([height, 0]);
 
                 // Opret akselobjekter for x- og y-aksen
                 const xAxis = d3.axisBottom(x)
-                    .tickValues(x.domain().filter((d, i) => i % 3 === 0)); // vis kun hver 4. måned på x-aksen
+                    .tickValues(x.domain().filter((d, i) => i % 3 === 0)); // viser kun hver 3. måned på x-aksen
 
                 const yAxis = d3.axisLeft(y);
 
-                // Tilføj aksler til diagrammet
+                //Laver et svg-element til div tagget #chart
                 const svg = d3.select("#chart")
                     .append("svg")
                     .attr("width", width + margin.left + margin.right)
@@ -60,7 +62,7 @@
                 svg.append("g")
                     .call(yAxis);
 
-                // Tilføj datapunkter til diagrammet
+                // Tilføjer datapunkterne til diagrammet
                 svg.selectAll(".bar")
                     .data(data)
                     .enter()
@@ -70,7 +72,7 @@
                     .attr("y", d => y(d.price))
                     .attr("width", x.bandwidth())
                     .attr("height", d => height - y(d.price))
-                    .attr("fill", d => d3.interpolateRgb("brown", "orange")(d.price / 100))
+                    .attr("fill", d => d3.interpolateRgb("yellow", "red")(d.price / 100))
                     .on("mouseover", function() {
                         d3.select(this)
                             .attr("opacity", 1)
@@ -79,7 +81,7 @@
                     .on("mouseout", function() {
                         d3.select(this)
                             .attr("opacity", 1.0)
-                            .attr("fill", d => d3.interpolateRgb("brown", "orange")(d.price / 100));
+                            .attr("fill", d => d3.interpolateRgb("yellow", "red")(d.price / 100));
                     })
                     .append("title")
                     .text(d => `Måned: ${d.month}\n Pris: ${d.price}`);
