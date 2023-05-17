@@ -27,7 +27,7 @@
         const width = 1000 - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
         // Henter data fra PgA/API som json
-        fetch('/electricity_rates')
+        fetch('https://wattsupapi.onrender.com/electricity_rates')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Fejl ved hentning af data.');
