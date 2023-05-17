@@ -1,5 +1,14 @@
+
+head {
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+}
+
+
 body {
-	background-color: #abe5c8c8;
+	background-color: #f3e9c0c1;
+	font-family: 'Nunito', sans-serif;
 	/* Her angiver du hex-koden for den ønskede farve */
 }
 
@@ -8,13 +17,14 @@ body {
 .back-button {
 	display: inline-block;
 	padding: 10px 20px;
-	background-color: #0175ac;
-	color: rgb(255, 255, 255);
+	background-color: #e7cb97c1;
+	color: rgb(0, 0, 0);
+	font-family: 'Nunito', '' sans-serif;
 	text-decoration: none;
 	border-radius: 5px;
 }
 
 /* Når musen er over knappen */
 .back-button:hover {
-	background-color: #00419c;
+	background-color: #cab07ec1;
 }
