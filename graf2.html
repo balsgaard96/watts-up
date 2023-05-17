@@ -10,11 +10,17 @@
 <body>
     <a href="index.html" class="back-button">Tilbage til forsiden</a>
     <h1>Elpriser fra april 2016 til september 2022</h1>
-    <p>Grafen viser den gennemsnitlige elpris i øre pr. kWh for hele landet, baseret på en typisk forbruger med et årligt forbrug på 4.000 kWh. 
-    <br>Da der er tale om et gennemsnitligt forbrug, vil det faktiske årlige forbrug for en husstand eller mindre virksomhed afvige fra de 4.000 kWh.
-    <br>F.eks. udgør det gennemsnitlige årlige forbrug for en 4-personers familie (2 voksne og 2 børn) i et parcelhus (ca. 150 m2) omtrent 4.400 kWh. 
-    <br>For én person i en 80 m2 lejlighed udgør det forventede årlige forbrug knap 1.900 kWh.</p>
-    <div id="chart"></div>
+    <p>Grafen viser den gennemsnitlige elpris i øre pr. kWh for hele landet, baseret på en typisk forbruger med et
+        årligt forbrug på 4.000 kWh.
+        <br>Da der er tale om et gennemsnitligt forbrug, vil det faktiske årlige forbrug for en husstand eller mindre
+        virksomhed afvige fra de 4.000 kWh.
+        <br>F.eks. udgør det gennemsnitlige årlige forbrug for en 4-personers familie (2 voksne og 2 børn) i et
+        parcelhus (ca. 150 m2) omtrent 4.400 kWh.
+        <br>For én person i en 80 m2 lejlighed udgør det forventede årlige forbrug knap 1.900 kWh.
+    </p>
+    <div id="chart">
+        <p>Loading graph....</p>
+    </div>
     <script>
         // Definer variabler for diagrammets størrelse og margener
         const margin = { top: 20, right: 30, bottom: 50, left: 40 };
@@ -22,8 +28,15 @@
         const height = 500 - margin.top - margin.bottom;
         // Henter data fra PgA/API som json
         fetch('/electricity_rates')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Fejl ved hentning af data.');
+                }
+                return response.json()
+            })
             .then(data => {
+                // Fjerner den midlertidige tekst, når data er blevet hentet
+                document.getElementById('chart').innerHTML = ''
                 // Opret skalaer for x- og y-aksen
                 // ScaleBand, da dataerne er kategoriske værdier
                 const x = d3.scaleBand()
@@ -34,7 +47,7 @@
 
                 //Lineær skalering for y-aksen, da det er numeriske værdier
                 const y = d3.scaleLinear()
-                    .domain([0,240])
+                    .domain([0, 240])
                     .range([height, 0]);
 
                 // Opret akselobjekter for x- og y-aksen
@@ -73,12 +86,12 @@
                     .attr("width", x.bandwidth())
                     .attr("height", d => height - y(d.price))
                     .attr("fill", d => d3.interpolateRgb("yellow", "red")(d.price / 100))
-                    .on("mouseover", function() {
+                    .on("mouseover", function () {
                         d3.select(this)
                             .attr("opacity", 1)
                             .attr("fill", "Blue");
                     })
-                    .on("mouseout", function() {
+                    .on("mouseout", function () {
                         d3.select(this)
                             .attr("opacity", 1.0)
                             .attr("fill", d => d3.interpolateRgb("yellow", "red")(d.price / 100));
@@ -88,10 +101,13 @@
             })
             .catch(error => {
                 console.error(error);
+                // Viser fejlmeddelelse i stedet for grafen
+                document.getElementById('chart').innerHTML = '<p>Hvis der ikke bliver vist en graf her, så <a href="https://wattsupapi.onrender.com/electricity_rates">tryk her</a> for at vække den, og genindlæs siden.</p>';
             });
     </script>
 
-<p><br>Dataen er taget fra Forsyningstilsynet, som overvåger elpriserne på detailmarkedet for husholdninger og mindre virksomheder (forbrug op til 100.000 kWh årligt).</p>
+    <p><br>Dataen er taget fra Forsyningstilsynet, som overvåger elpriserne på detailmarkedet for husholdninger og
+        mindre virksomheder (forbrug op til 100.000 kWh årligt).</p>
 </body>
 
 </html>
