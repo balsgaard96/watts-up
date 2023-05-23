@@ -23,7 +23,6 @@
         <br>For én person i en 80 m2 lejlighed udgør det forventede årlige forbrug knap 1.900 kWh.
     </p>
     <div id="chart">
-        <p>Loading graph....</p>
     </div>
     <script>
         // Definer variabler for diagrammets størrelse og margener
@@ -32,15 +31,8 @@
         const height = 500 - margin.top - margin.bottom;
         // Henter data fra PgA/API som json
         fetch('/electricity_rates')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Fejl ved hentning af data.');
-                }
-                return response.json()
-            })
+            .then(response => response.json())
             .then(data => {
-                // Fjerner den midlertidige tekst, når data er blevet hentet
-                document.getElementById('chart').innerHTML = ''
                 // Opret skalaer for x- og y-aksen
                 // ScaleBand, da dataerne er kategoriske værdier
                 const x = d3.scaleBand()
@@ -105,8 +97,6 @@
             })
             .catch(error => {
                 console.error(error);
-                // Viser fejlmeddelelse i stedet for grafen
-                document.getElementById('chart').innerHTML = '<p>Hvis der ikke bliver vist en graf her, så <a href="https://wattsupapi.onrender.com/electricity_rates">tryk her</a> for at vække den, og genindlæs siden.</p>';
             });
     </script>
 
