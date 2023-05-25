@@ -42,15 +42,15 @@
 
     <h1>Hvor lang tid skal Jonas Vingegaard cykle,
         og hvad koster det</h1>
-    <form>
-        <h3><label for="elektrisk-apparat-effekt">Elektrisk apparat i watt</label>
-            <input type="number" id="elektrisk-apparat-effekt" name="elektrisk-apparat-effekt" required>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="tid">Tid i timer </label>
-            <input type="number" id="tid" name="tid" required>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit">Beregn</button>
-    </form>
+        <form>
+            <h3><label for="elektrisk-apparat-effekt">Elektrisk apparat i watt</label>
+                <input type="number" id="elektrisk-apparat-effekt" name="elektrisk-apparat-effekt" step="any" min="0" required>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="tid">Tid i timer </label>
+                <input type="number" id="tid" name="tid" step="any" min="0" required>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit">Beregn</button>
+        </form>
 
     <div id="resultat"></div>
 
@@ -99,7 +99,7 @@
     <script>
         function moveDown() {
             var gif = document.querySelector('.gif-animation');
-            gif.style.top = "40px"; /* Juster denne værdi for at flytte GIF'en nedad */
+            gif.style.top = "0px"; /* Juster denne værdi for at flytte GIF'en nedad */
         }
 
         moveDown(); // Kald moveDown-funktionen for at flytte GIF'en nedad ved indlæsning af siden
